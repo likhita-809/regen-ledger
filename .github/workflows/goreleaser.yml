@@ -39,6 +39,8 @@ jobs:
           mkdir ../../osxcross
           git clone https://github.com/likhita-809/osxcross-target.git ../../osxcross/target
           sudo ln -s /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+          echo "========================"
+          whereis aarch64-w64-mingw32-gcc
       -
         name: Checkout
         uses: actions/checkout@v2
@@ -48,7 +50,7 @@ jobs:
         name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.15
+          go-version: 1.16
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
