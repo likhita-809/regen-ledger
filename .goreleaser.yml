@@ -1,7 +1,8 @@
 env:
   - GO111MODULE=on
   - CGO_ENABLED=1
-  - LD_LIBRARY_PATH=/home/runner/work/osxcross/target/binaries/lib
+  - LD_LIBRARY_PATH=/home/runner/work/osxcross/target/binaries/lib 
+
 
 builds:
 
@@ -13,8 +14,10 @@ builds:
     goos:
       - windows
     env:
-      - CC=x86_64-w64-mingw32-gcc
-      - CXX=x86_64-w64-mingw32-g++
+      - CC=/home/runner/work/osxcross/target/target/bin/x86_64-w64-mingw32-gcc
+      - CXX=/home/runner/work/osxcross/target/target/bin/x86_64-w64-mingw32-g++
+      # - CC=x86_64-w64-mingw32-gcc
+      # - CXX=x86_64-w64-mingw32-g++
     flags:
       - -tags="netgo ledger"
       - -trimpath

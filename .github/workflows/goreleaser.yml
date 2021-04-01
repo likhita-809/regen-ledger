@@ -19,6 +19,8 @@ jobs:
           sudo apt-get install gcc-mingw-w64-x86-64
           echo "==========================="
           whereis x86_64-w64-mingw32-gcc
+          echo "==========================="
+          ls /usr/bin
       -
         name: GCC multilib
         run: |
