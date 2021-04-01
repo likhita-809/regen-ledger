@@ -13,6 +13,12 @@ jobs:
 
     steps:
       -
+        name: Windows dependencies
+        run: |
+          sudo apt install binutils-mingw-w64
+          echo "==========================="
+          whereis x86_64-w64-mingw32-gcc
+      -
         name: GCC multilib
         run: |
           sudo apt-get update
