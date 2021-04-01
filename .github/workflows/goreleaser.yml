@@ -17,6 +17,7 @@ jobs:
         run: |
           sudo apt install binutils-mingw-w64
           sudo apt-get install gcc-mingw-w64-x86-64
+          sudo apt-get install g++-mingw-w64-x86-64
           echo "==========================="
           whereis x86_64-w64-mingw32-gcc
           whereis x86_64-w64-mingw32-g++
