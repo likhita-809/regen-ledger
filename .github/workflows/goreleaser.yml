@@ -12,17 +12,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      -
-        name: Windows dependencies
-        run: |
-          sudo apt install binutils-mingw-w64
-          sudo apt-get install gcc-mingw-w64-x86-64
-          sudo apt-get install g++-mingw-w64-x86-64
-          echo "==========================="
-          whereis x86_64-w64-mingw32-gcc
-          whereis x86_64-w64-mingw32-g++
-          echo "==========================="
-          ls /usr/lib
+      # -
+      #   name: Windows dependencies
+      #   run: |
+      #     sudo apt install binutils-mingw-w64
+      #     sudo apt-get install gcc-mingw-w64-x86-64
+      #     sudo apt-get install g++-mingw-w64-x86-64
+      #     echo "==========================="
+      #     whereis x86_64-w64-mingw32-gcc
+      #     whereis x86_64-w64-mingw32-g++
+      #     echo "==========================="
+      #     ls /usr/lib
+
+# sudo cp /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu
+#           sudo cp /home/runner/work/osxcross/target/target/lib/x86_64-w64-mingw32-ld /usr/lib/x86_64-w64-mingw32-ld         
+
+
       -
         name: GCC multilib
         run: |
@@ -33,9 +38,7 @@ jobs:
         run: |
           mkdir ../../osxcross
           git clone https://github.com/likhita-809/osxcross-target.git ../../osxcross/target
-          sudo cp /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu
-          sudo cp /home/runner/work/osxcross/target/target/lib/x86_64-w64-mingw32-ld /usr/lib/x86_64-w64-mingw32-ld         
-
+          sudo ln -s /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
       -
         name: Checkout
         uses: actions/checkout@v2
