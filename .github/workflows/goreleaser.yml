@@ -22,21 +22,20 @@ jobs:
           whereis x86_64-w64-mingw32-gcc
           whereis x86_64-w64-mingw32-g++
           echo "==========================="
-          ls /usr/bin
+          ls /usr/lib
       -
         name: GCC multilib
         run: |
           sudo apt-get update
           sudo apt-get install gcc-multilib g++-multilib clang 
-          
+#  sudo cp /home/runner/work/osxcross/target/target/lib/x86_64-w64-mingw32-ld         
       -
         name: OSXCross for CGO Support
         run: |
           mkdir ../../osxcross
           git clone https://github.com/likhita-809/osxcross-target.git ../../osxcross/target
           sudo cp /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu
-          ls /home/runner/work/osxcross/target/binaries/lib
-
+          
       -
         name: Checkout
         uses: actions/checkout@v2
