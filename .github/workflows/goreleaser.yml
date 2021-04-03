@@ -33,6 +33,7 @@ jobs:
       -
         name: Install arm dependencies
         run: |
+          echo $PATH
           sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
 
       -
