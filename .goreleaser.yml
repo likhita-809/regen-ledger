@@ -6,29 +6,6 @@ env:
 
 builds:
 
-  # - id: regen-windows-amd64
-  #   binary: regen
-  #   main: ./app/regen
-  #   goarch:
-  #     - amd64
-  #   goos:
-  #     - windows
-  #   env:
-  #     - CC=/usr/bin/x86_64-w64-mingw32-gcc
-  #     - CXX=/usr/bin/x86_64-w64-mingw32-g++
-  #     # - CC=/home/runner/work/osxcross/target/target/bin/x86_64-w64-mingw32-gcc
-  #     # - CXX=/home/runner/work/osxcross/target/target/bin/x86_64-w64-mingw32-g++
-  #     # - CC=x86_64-w64-mingw32-gcc
-  #     # - CXX=x86_64-w64-mingw32-g++
-  #   flags:
-  #     - -tags="netgo ledger"
-  #     - -trimpath
-  #     - -mod=readonly
-  #     - -buildmode=exe
-  #   ldflags:
-  #     - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
-  #     - -linkmode=external
-
   - id: regen-windows-arm
     binary: regen
     main: ./app/regen
@@ -36,6 +13,8 @@ builds:
       - arm
     goos:
       - windows
+    env:
+      - CC=arm-linux-gnueabi-gcc
     # env:
     #   - CC=aarch64-w64-mingw32-gcc
     #   - CXX=aarch64-w64-mingw32-g++
@@ -52,36 +31,36 @@ builds:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
       - -linkmode=external
 
-  # - id: regen-darwin-amd64
-  #   binary: regen
-  #   main: ./app/regen
-  #   goarch:
-  #     - amd64
-  #   goos:
-  #     - darwin
-  #   env:
-  #     - CC=/home/runner/work/osxcross/target/target/bin/o64-clang
-  #     - CXX=/home/runner/work/osxcross/target/target/bin/o64-clang++
-  #   flags:
-  #     - -tags="netgo ledger"
-  #     - -trimpath
-  #     - -mod=readonly
-  #   ldflags:
-  #     - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
+  - id: regen-darwin-amd64
+    binary: regen
+    main: ./app/regen
+    goarch:
+      - amd64
+    goos:
+      - darwin
+    env:
+      - CC=/home/runner/work/osxcross/target/target/bin/o64-clang
+      - CXX=/home/runner/work/osxcross/target/target/bin/o64-clang++
+    flags:
+      - -tags="netgo ledger"
+      - -trimpath
+      - -mod=readonly
+    ldflags:
+      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
 
-  # - id: regen-linux-amd64
-  #   binary: regen
-  #   main: ./app/regen
-  #   goarch:
-  #     - amd64
-  #   goos:
-  #     - linux
-  #   flags:
-  #     - -tags="netgo ledger"
-  #     - -trimpath
-  #     - -mod=readonly
-  #   ldflags:
-  #     - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
+  - id: regen-linux-amd64
+    binary: regen
+    main: ./app/regen
+    goarch:
+      - amd64
+    goos:
+      - linux
+    flags:
+      - -tags="netgo ledger"
+      - -trimpath
+      - -mod=readonly
+    ldflags:
+      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
  
 
 archives:
@@ -89,8 +68,8 @@ archives:
     builds:
       # - regen-windows-amd64
       - regen-windows-arm
-      # - regen-darwin-amd64
-      # - regen-linux-amd64   
+      - regen-darwin-amd64
+      - regen-linux-amd64   
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     wrap_in_directory: true
     format: zip
