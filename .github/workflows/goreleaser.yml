@@ -31,7 +31,7 @@ jobs:
       -
         name: Install arm dependencies
         run: |
-          sudo apt-get install gcc g++-6   
+          sudo apt-get install gcc g++
           sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
 
       -
