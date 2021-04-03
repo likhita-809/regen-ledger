@@ -32,13 +32,12 @@ jobs:
         name: Install arm dependencies
         run: |
           sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
-          echo "===================="
-          whereis arm-linux-gnueabi-gcc
 
       -
         name: GCC multilib
         run: |
           sudo apt-get update
+          sudo apt-get install --reinstall build-essential
           sudo apt-get install gcc-multilib g++-multilib clang 
       -
         name: OSXCross for CGO Support
