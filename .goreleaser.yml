@@ -11,6 +11,8 @@ builds:
     main: ./app/regen
     goarch:
       - arm
+    goarm:
+      - 5
     goos:
       - windows
     env:
