@@ -16,8 +16,9 @@ builds:
     goos:
       - windows
     env:
-      - CC=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-gcc
-      - CXX=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-g++
+      # - CROSS_COMPILE=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-gcc
+      - CC=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-gcc-7
+      - CXX=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-g++-7
     # env:
     #   - CC=aarch64-w64-mingw32-gcc
     #   - CXX=aarch64-w64-mingw32-g++
