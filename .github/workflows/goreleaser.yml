@@ -54,6 +54,7 @@ jobs:
           mkdir ../../osxcross
           git clone https://github.com/likhita-809/osxcross-target.git ../../osxcross/target
           sudo ln -s /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+          sudo ln -s /usr/lib/gcc/x86_64-linux-gnu/9/cc1 /usr/lib/x86_64-linux-gnu/cc1
          
 
           echo "========================"
