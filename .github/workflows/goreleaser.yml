@@ -42,6 +42,8 @@ jobs:
         run: |
           echo $PATH
           sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
+          echo "===================="
+          whereis arm-linux-gnueabi-gcc
          
 
       -

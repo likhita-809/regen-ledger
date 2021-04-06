@@ -10,12 +10,12 @@ builds:
     main: ./app/regen
     goarch:
       - arm
-    goarm:
-      - 7
+    # goarm:
+    #   - 7
     goos:
       - windows
     env:
-      # - CROSS_COMPILE=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-gcc
+      - CROSS_COMPILE=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-
       - CC=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-gcc
       - CXX=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-g++
     # env:
