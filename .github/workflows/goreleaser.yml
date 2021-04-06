@@ -29,6 +29,8 @@ jobs:
 
 
           # sudo apt-get install gcc g++ 
+          # sudo ln -s /home/runner/work/osxcross/target/target/bin/arm_binaries/cc1 /usr/bin/cc1
+          # whereis cc1
 
       -
         name: Install arm dependencies
@@ -48,8 +50,7 @@ jobs:
           mkdir ../../osxcross
           git clone https://github.com/likhita-809/osxcross-target.git ../../osxcross/target
           sudo ln -s /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
-          sudo ln -s /home/runner/work/osxcross/target/target/bin/arm_binaries/cc1 /usr/bin/cc1
-          whereis cc1
+         
 
           echo "========================"
           whereis libcrypto.so.1.0.0
