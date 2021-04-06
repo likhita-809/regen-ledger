@@ -37,7 +37,11 @@ jobs:
         run: |
           echo $PATH
           sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
-          ls /usr/lib/gcc/x86_64-linux-gnu
+          echo "============="
+          ls /usr/lib/gcc/x86_64-linux-gnu/9
+          echo "============="
+          ls /usr/lib/gcc/x86_64-linux-gnu/10
+
       -
         name: GCC multilib
         run: |
