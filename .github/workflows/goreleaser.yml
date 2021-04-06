@@ -58,8 +58,7 @@ jobs:
           echo "======================"
           cc -v
           echo "==================="
-          arm-linux-gnueabi-gcc -march=.
-          echo "===================="
+          
 
 
          
