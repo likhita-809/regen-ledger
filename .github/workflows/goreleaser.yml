@@ -52,6 +52,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install --reinstall build-essential
           sudo apt-get install gcc-multilib g++-multilib clang 
+          echo "===================="
+          whereis arm-linux-gnueabi-gcc
+         
       -
         name: OSXCross for CGO Support
         run: |
