@@ -5,14 +5,13 @@ env:
 
 
 builds:
-
   - id: regen-windows-arm
     binary: regen
     main: ./app/regen
     goarch:
       - arm
     goarm:
-      - 5
+      - 7
     goos:
       - windows
     env:
