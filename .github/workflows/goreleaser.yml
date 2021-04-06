@@ -37,17 +37,17 @@ jobs:
           # echo "============="
           # ls /usr/lib/x86_64-linux-gnu
 
-      -
-        name: Install arm dependencies
-        run: |
-          echo $PATH
-          sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
-          echo "===================="
-          whereis arm-linux-gnueabi-gcc
+      # -
+      #   name: Install arm dependencies
+      #   run: |
+      #     echo $PATH
+      #     sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
+      #     echo "===================="
+      #     whereis arm-linux-gnueabi-gcc
          
 
       -
-        name: GCC multilib
+        name: GCC multilib and arm dependencies
         run: |
           sudo apt-get update
           sudo apt-get install --reinstall build-essential
@@ -55,6 +55,10 @@ jobs:
           sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
           echo "===================="
           whereis arm-linux-gnueabi-gcc
+          echo "======================"
+          cc -v
+          echo "==================="
+
          
       -
         name: OSXCross for CGO Support
