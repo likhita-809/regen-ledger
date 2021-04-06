@@ -40,7 +40,7 @@ jobs:
           echo "============="
           ls /usr/lib/gcc/x86_64-linux-gnu/9
           echo "============="
-          ls /usr/lib/gcc/x86_64-linux-gnu/10
+          ls /usr/lib/x86_64-linux-gnu
 
       -
         name: GCC multilib
