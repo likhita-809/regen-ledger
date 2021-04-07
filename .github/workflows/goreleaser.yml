@@ -53,7 +53,9 @@ jobs:
           sudo apt-get install --reinstall build-essential
           sudo apt-get install gcc-multilib g++-multilib clang 
           sudo apt-get install gcc-9-arm-linux-gnueabi g++-9-arm-linux-gnueabi
+          sudo apt-get install gcc-mingw-w64
           echo "===================="
+          whereis x86_64-w64-mingw32-gcc
           whereis arm-linux-gnueabi-gcc-9
           echo "======================"
           cc -v
