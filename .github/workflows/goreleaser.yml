@@ -54,6 +54,7 @@ jobs:
           sudo apt-get install gcc-multilib g++-multilib clang 
           sudo apt-get install gcc-9-arm-linux-gnueabi g++-9-arm-linux-gnueabi
           sudo apt-get install gcc-mingw-w64
+          ls /opt/hostedtoolcache/go/1.16.2/x64/pkg/tool
           echo "===================="
           ls /opt/hostedtoolcache/go/1.16.2/x64/pkg/tool/linux_amd64
           echo "===================="
