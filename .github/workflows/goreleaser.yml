@@ -57,7 +57,7 @@ jobs:
           echo "===================="
           ls /opt/hostedtoolcache/go/1.16.2/x64/pkg/tool/linux_amd64
           echo "===================="
-          ls /opt/hostedtoolcache/go/1.16.2/x64/x64.complete
+          ls /opt/hostedtoolcache/go/1.16.2/x64
           echo "===================="
           whereis x86_64-w64-mingw32-gcc
           echo "======================"
