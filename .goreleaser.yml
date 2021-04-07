@@ -5,26 +5,26 @@ env:
 
 
 builds:
-  - id: regen-windows-i686
+  - id: regen-windows-arm
     binary: regen
     main: ./app/regen
     goarch:
-      - 386
-      # - arm
+      # - 386
+      - arm
     # goarm:
     #   - 6
     #   - 7
     goos:
       - windows
     env:
-      - CC=/usr/bin/i686-w64-mingw32-gcc
-      - CXX=/usr/bin/i686-w64-mingw32-g++
+      # - CC=/usr/bin/i686-w64-mingw32-gcc
+      # - CXX=/usr/bin/i686-w64-mingw32-g++
       # - CC=/usr/bin/x86_64-w64-mingw32-gcc
       # - CXX=/usr/bin/x86_64-w64-mingw32-g++
       # - PKG_CONFIG_PATH=/mingw64/lib/pkgconfig
-      # - CROSS_COMPILE=arm-linux-gnueabi
-      # - CC=/usr/bin/arm-linux-gnueabi-gcc-9 
-      # - CXX=/usr/bin/arm-linux-gnueabi-g++-9
+      - CROSS_COMPILE=arm-linux-gnueabi
+      - CC=/usr/bin/arm-linux-gnueabi-gcc-
+      - CXX=/usr/bin/arm-linux-gnueabi-g++
       # - CROSS_COMPILE=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-
       # - CC=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-gcc-7
       # - CXX=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-g++-7
