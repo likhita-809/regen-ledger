@@ -23,7 +23,7 @@ builds:
       # - CXX=/usr/bin/x86_64-w64-mingw32-g++
       # - PKG_CONFIG_PATH=/mingw64/lib/pkgconfig
       - CROSS_COMPILE=arm-linux-gnueabi
-      - CC=/usr/bin/arm-linux-gnueabi-gcc-
+      - CC=/usr/bin/arm-linux-gnueabi-gcc
       - CXX=/usr/bin/arm-linux-gnueabi-g++
       # - CROSS_COMPILE=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-
       # - CC=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-gcc-7
