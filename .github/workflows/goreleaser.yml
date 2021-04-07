@@ -55,6 +55,10 @@ jobs:
           sudo apt-get install gcc-9-arm-linux-gnueabi g++-9-arm-linux-gnueabi
           sudo apt-get install gcc-mingw-w64
           echo "===================="
+          ls /opt/hostedtoolcache/go/1.16.2
+          echo "===================="
+          ls /opt/hostedtoolcache/go/1.16.2/x64
+          echo "===================="
           whereis x86_64-w64-mingw32-gcc
           echo "======================"
           cc -v
