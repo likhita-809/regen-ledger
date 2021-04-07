@@ -58,6 +58,9 @@ jobs:
           echo "======================"
           cc -v
           echo "==================="
+          whereis arm-linux-gnueabi-9
+          echo "==================="
+          ls /usr/lib
           
 
 
