@@ -1,3 +1,5 @@
+project_name: regen-ledger
+
 env:
   - GO111MODULE=on
   - CGO_ENABLED=1
@@ -60,6 +62,15 @@ brews:
       system "#{bin}/regen--version"
     install: |
       bin.install "regen"
+nfpms:
+- maintainer: regen-network
+  description: Sample project.
+  homepage: https://github.com/regen-network/regen-ledger
+  license: MIT
+  formats:
+  - deb
+  - rpm
+  - apk
 release:
   github:
     owner: regen-network
