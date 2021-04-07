@@ -55,7 +55,6 @@ jobs:
           sudo apt-get install gcc-9-arm-linux-gnueabi g++-9-arm-linux-gnueabi
           sudo apt-get install gcc-mingw-w64
           echo "===================="
-          ls /mingw64/lib/pkgconfig
           whereis x86_64-w64-mingw32-gcc
           echo "======================"
           cc -v
