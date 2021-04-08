@@ -73,7 +73,7 @@ nfpms:
   - apk
 release:
   github:
-    owner: regen-network
+    owner: likhita-809
     name: regen-ledger
   prerelease: auto
   draft: false
