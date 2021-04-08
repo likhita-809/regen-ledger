@@ -54,7 +54,6 @@ brews:
     tap:
       owner: likhita-809
       name: regen-ledger
-      # name: homembrew-tap
     homepage: "https://www.regen.network/"
     description: "Blockchain-powered marketplace for climate solutions and planetary regenerations"
     custom_block: |
@@ -65,7 +64,7 @@ brews:
       bin.install "regen"
 nfpms:
 - maintainer: regen-network
-  description: Sample project.
+  description: "Blockchain-powered marketplace for climate solutions and planetary regenerations"
   homepage: https://github.com/likhita-809/regen-ledger
   license: MIT
   formats:
