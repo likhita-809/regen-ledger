@@ -45,6 +45,9 @@ jobs:
       #     echo "===================="
       #     whereis arm-linux-gnueabi-gcc
          
+      - name: print env
+        run: |
+          echo  ${{ secrets.GITHUB_TOKEN }}
 
       -
         name: GCC multilib and arm dependencies
