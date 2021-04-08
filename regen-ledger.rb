@@ -5,16 +5,16 @@
 class RegenLedger < Formula
   desc "Blockchain-powered marketplace for climate solutions and planetary regenerations"
   homepage "https://www.regen.network/"
-  version "0.7.7"
+  version "0.7.8"
   bottle :unneeded
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/likhita-809/regen-ledger/releases/download/v0.7.7/regen-ledger_0.7.7_darwin_amd64.zip"
-    sha256 "47d740e575651ec13351a2a95137327e0842287da261e21558f871d831a0a24e"
+    url "https://github.com/likhita-809/regen-ledger/releases/download/v0.7.8/regen-ledger_0.7.8_darwin_amd64.zip"
+    sha256 "89a8958af76bdb3ad95d70a29779df928e66ff5b102ba878611fab8b7658db9e"
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/likhita-809/regen-ledger/releases/download/v0.7.7/regen-ledger_0.7.7_linux_amd64.zip"
-    sha256 "45ca90c86c4f23c5b332d76f6e87e0cfe234d15a1acfa0a27db390cf2cca590b"
+    url "https://github.com/likhita-809/regen-ledger/releases/download/v0.7.8/regen-ledger_0.7.8_linux_amd64.zip"
+    sha256 "f2313a922c647212226113243d49a4e2766902b712a32523017714eb0e0861c9"
   end
 
   head "https://github.com/likhita-809/regen-ledger.git"
@@ -24,6 +24,6 @@ class RegenLedger < Formula
   end
 
   test do
-    system "#{bin}/regen--version"
+    system "#{bin}/regen --version"
   end
 end
