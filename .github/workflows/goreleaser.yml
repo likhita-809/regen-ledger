@@ -42,7 +42,7 @@ jobs:
           version: latest
           args: release --rm-dist
         env:
-          github-token: ${{ secrets.github_token }}
+          GITHUB_TOKEN: ${{ secrets.github_token }}
         # env:
         #   GITHUB_TOKEN: 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
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
