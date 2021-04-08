@@ -66,8 +66,7 @@ brews:
 nfpms:
 - maintainer: regen-network
   description: Sample project.
-  # homepage: https://github.com/regen-network/regen-ledger
-    homepage: https://github.com/likhita-809/regen-ledger
+  homepage: https://github.com/likhita-809/regen-ledger
   license: MIT
   formats:
   - deb
