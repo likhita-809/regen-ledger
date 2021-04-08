@@ -74,6 +74,6 @@ nfpms:
 release:
   github:
     owner: regen-network
-    name: regen
+    name: regen-ledger
   prerelease: auto
   draft: false
