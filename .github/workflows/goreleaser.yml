@@ -59,8 +59,6 @@ jobs:
           sudo apt-get install gcc-mingw-w64
           echo "======================="
           whereis i686-w64-mingw32-gcc
-          echo "======================="
-          ls /opt/hostedtoolcache/go/1.16.2/x64/pkg/tool
           echo "===================="
           ls /opt/hostedtoolcache/go/1.16.2/x64/pkg/tool/linux_amd64
           echo "===================="
