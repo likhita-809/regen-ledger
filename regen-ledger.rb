@@ -5,16 +5,16 @@
 class RegenLedger < Formula
   desc "Blockchain-powered marketplace for climate solutions and planetary regenerations"
   homepage "https://www.regen.network/"
-  version "0.7.8"
+  version "0.7.9"
   bottle :unneeded
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/likhita-809/regen-ledger/releases/download/v0.7.8/regen-ledger_0.7.8_darwin_amd64.zip"
-    sha256 "89a8958af76bdb3ad95d70a29779df928e66ff5b102ba878611fab8b7658db9e"
+    url "https://github.com/likhita-809/regen-ledger/releases/download/v0.7.9/regen-ledger_0.7.9_darwin_amd64.zip"
+    sha256 "874d696be9cffa289fab7e582edbd901f559a4cae55be819c4610b7fb5622051"
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/likhita-809/regen-ledger/releases/download/v0.7.8/regen-ledger_0.7.8_linux_amd64.zip"
-    sha256 "f2313a922c647212226113243d49a4e2766902b712a32523017714eb0e0861c9"
+    url "https://github.com/likhita-809/regen-ledger/releases/download/v0.7.9/regen-ledger_0.7.9_linux_amd64.zip"
+    sha256 "4209871c9177b5e31eb286add4f7d155cb60f200851ae8595d07951e6fb55421"
   end
 
   head "https://github.com/likhita-809/regen-ledger.git"
