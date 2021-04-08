@@ -59,7 +59,7 @@ brews:
     custom_block: |
       head "https://github.com/likhita-809/regen-ledger.git"
     test: |
-      system "#{bin}/regen--version"
+      system "#{bin}/regen --version"
     install: |
       bin.install "regen"
 nfpms:
