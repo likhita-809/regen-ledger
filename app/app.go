@@ -77,14 +77,13 @@ import (
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	"github.com/gorilla/mux"
 	"github.com/rakyll/statik/fs"
+	"github.com/regen-network/regen-ledger/types/module/server"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/libs/log"
 	tmos "github.com/tendermint/tendermint/libs/os"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	dbm "github.com/tendermint/tm-db"
-
-	"github.com/regen-network/regen-ledger/types/module/server"
 )
 
 const (
@@ -168,7 +167,8 @@ type RegenApp struct {
 	TransferKeeper   ibctransferkeeper.Keeper
 	//nolint
 	// wasmKeeper     wasm.Keeper // only used in experimental builds
-	authzKeeper    authzkeeper.Keeper
+	authzKeeper authzkeeper.Keeper
+	//nolint
 	feegrantKeeper feegrantkeeper.Keeper
 	// make scoped keepers public for test purposes
 	ScopedIBCKeeper      capabilitykeeper.ScopedKeeper

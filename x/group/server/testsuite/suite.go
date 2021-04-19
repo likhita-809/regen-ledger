@@ -71,7 +71,8 @@ func (s *IntegrationTestSuite) SetupSuite() {
 
 	// totalSupply := banktypes.NewSupply(sdk.NewCoins(sdk.NewInt64Coin("test", 400000000)))
 	// s.bankKeeper.SetSupply(sdkCtx, totalSupply)
-	s.bankKeeper.MintCoins(sdkCtx, minttypes.ModuleName, sdk.NewCoins(sdk.NewInt64Coin("test", 400000000)))
+	err := s.bankKeeper.MintCoins(sdkCtx, minttypes.ModuleName, sdk.NewCoins(sdk.NewInt64Coin("test", 400000000)))
+	s.Require().NoError(err)
 
 	s.bankKeeper.SetParams(sdkCtx, banktypes.DefaultParams())
 
