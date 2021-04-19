@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/CosmWasm/wasmd/x/wasm"
+	// "github.com/CosmWasm/wasmd/x/wasm"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/grpc/tmservice"
@@ -166,7 +166,7 @@ type RegenApp struct {
 	EvidenceKeeper   evidencekeeper.Keeper
 	TransferKeeper   ibctransferkeeper.Keeper
 	//nolint
-	wasmKeeper     wasm.Keeper // only used in experimental builds
+	// wasmKeeper     wasm.Keeper // only used in experimental builds
 	authzKeeper    authzkeeper.Keeper
 	feegrantKeeper feegrantkeeper.Keeper
 	// make scoped keepers public for test purposes
