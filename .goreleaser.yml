@@ -63,7 +63,7 @@ brews:
     install: |
       bin.install "regen"
 nfpms:
-- maintainer: regen-network
+- maintainer: likhita-809
   description: "Blockchain-powered marketplace for climate solutions and planetary regenerations"
   homepage: https://github.com/likhita-809/regen-ledger
   license: MIT
