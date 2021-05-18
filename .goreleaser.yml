@@ -3,49 +3,9 @@ project_name: regen-ledger
 env:
   - GO111MODULE=on
   - CGO_ENABLED=1
-  - LD_LIBRARY_PATH=/home/runner/work/osxcross/target/binaries/lib 
-
+  - LD_LIBRARY_PATH=/home/runner/work/osxcross/target/binaries/lib
 
 builds:
-  - id: regen-windows-arm
-    binary: regen
-    main: ./app/regen
-    goarch:
-      # - 386
-      - arm
-    # goarm:
-    #   - 6
-    #   - 7
-    goos:
-      - windows
-    env:
-      # - CC=/usr/bin/i686-w64-mingw32-gcc
-      # - CXX=/usr/bin/i686-w64-mingw32-g++
-      # - CC=/usr/bin/x86_64-w64-mingw32-gcc
-      # - CXX=/usr/bin/x86_64-w64-mingw32-g++
-      # - PKG_CONFIG_PATH=/mingw64/lib/pkgconfig
-      - CROSS_COMPILE=arm-linux-gnueabi
-      - CC=/usr/bin/arm-linux-gnueabi-gcc
-      - CXX=/usr/bin/arm-linux-gnueabi-g++
-      # - CROSS_COMPILE=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-
-      # - CC=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-gcc-7
-      # - CXX=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-g++-7
-    # env:
-    #   - CC=aarch64-w64-mingw32-gcc
-    #   - CXX=aarch64-w64-mingw32-g++
-      # - CC=/home/runner/work/osxcross/target/target/bin/x86_64-w64-mingw32-gcc
-      # - CXX=/home/runner/work/osxcross/target/target/bin/x86_64-w64-mingw32-g++
-      # - CC=x86_64-w64-mingw32-gcc
-      # - CXX=x86_64-w64-mingw32-g++
-    flags:
-      - -tags="netgo ledger"
-      - -trimpath
-      - -mod=readonly   
-      - -buildmode=exe
-    ldflags:
-      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
-      - -linkmode=external
-
   - id: regen-darwin-amd64
     binary: regen
     main: ./app/regen
@@ -76,13 +36,10 @@ builds:
       - -mod=readonly
     ldflags:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
- 
 
 archives:
   - id: regen
     builds:
-      # - regen-windows-amd64
-      - regen-windows-arm
       - regen-darwin-amd64
       - regen-linux-amd64   
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
@@ -120,3 +77,129 @@ release:
     name: regen-ledger
   prerelease: auto
   draft: false
+
+
+
+
+# project_name: regen-ledger
+
+# env:
+#   - GO111MODULE=on
+#   - CGO_ENABLED=1
+#   - LD_LIBRARY_PATH=/home/runner/work/osxcross/target/binaries/lib 
+
+
+# builds:
+#   - id: regen-windows-arm
+#     binary: regen
+#     main: ./app/regen
+#     goarch:
+#       # - 386
+#       - arm
+#     # goarm:
+#     #   - 6
+#     #   - 7
+#     goos:
+#       - windows
+#     env:
+#       # - CC=/usr/bin/i686-w64-mingw32-gcc
+#       # - CXX=/usr/bin/i686-w64-mingw32-g++
+#       # - CC=/usr/bin/x86_64-w64-mingw32-gcc
+#       # - CXX=/usr/bin/x86_64-w64-mingw32-g++
+#       # - PKG_CONFIG_PATH=/mingw64/lib/pkgconfig
+#       - CROSS_COMPILE=arm-linux-gnueabi
+#       - CC=/usr/bin/arm-linux-gnueabi-gcc
+#       - CXX=/usr/bin/arm-linux-gnueabi-g++
+#       # - CROSS_COMPILE=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-
+#       # - CC=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-gcc-7
+#       # - CXX=/home/runner/work/osxcross/target/target/bin/arm_binaries/arm-linux-gnueabi-g++-7
+#     # env:
+#     #   - CC=aarch64-w64-mingw32-gcc
+#     #   - CXX=aarch64-w64-mingw32-g++
+#       # - CC=/home/runner/work/osxcross/target/target/bin/x86_64-w64-mingw32-gcc
+#       # - CXX=/home/runner/work/osxcross/target/target/bin/x86_64-w64-mingw32-g++
+#       # - CC=x86_64-w64-mingw32-gcc
+#       # - CXX=x86_64-w64-mingw32-g++
+#     flags:
+#       - -tags="netgo ledger"
+#       - -trimpath
+#       - -mod=readonly   
+#       - -buildmode=exe
+#     ldflags:
+#       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
+#       - -linkmode=external
+
+#   - id: regen-darwin-amd64
+#     binary: regen
+#     main: ./app/regen
+#     goarch:
+#       - amd64
+#     goos:
+#       - darwin
+#     env:
+#       - CC=/home/runner/work/osxcross/target/target/bin/o64-clang
+#       - CXX=/home/runner/work/osxcross/target/target/bin/o64-clang++
+#     flags:
+#       - -tags="netgo ledger"
+#       - -trimpath
+#       - -mod=readonly
+#     ldflags:
+#       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
+
+#   - id: regen-linux-amd64
+#     binary: regen
+#     main: ./app/regen
+#     goarch:
+#       - amd64
+#     goos:
+#       - linux
+#     flags:
+#       - -tags="netgo ledger"
+#       - -trimpath
+#       - -mod=readonly
+#     ldflags:
+#       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=regen -X github.com/cosmos/cosmos-sdk/version.AppName=regen -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}} -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger"
+ 
+
+# archives:
+#   - id: regen
+#     builds:
+#       # - regen-windows-amd64
+#       - regen-windows-arm
+#       - regen-darwin-amd64
+#       - regen-linux-amd64   
+#     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+#     wrap_in_directory: true
+#     format: zip
+#     files:
+#       - none*
+# brews:
+#   - name: regen-ledger
+#     ids: 
+#       - regen
+#     tap:
+#       owner: likhita-809
+#       name: regen-ledger
+#     homepage: "https://www.regen.network/"
+#     description: "Blockchain-powered marketplace for climate solutions and planetary regenerations"
+#     custom_block: |
+#       head "https://github.com/likhita-809/regen-ledger.git"
+#     test: |
+#       system "#{bin}/regen --version"
+#     install: |
+#       bin.install "regen"
+# nfpms:
+# - maintainer: regen-network
+#   description: "Blockchain-powered marketplace for climate solutions and planetary regenerations"
+#   homepage: https://github.com/likhita-809/regen-ledger
+#   license: MIT
+#   formats:
+#   - deb
+#   - rpm
+#   - apk
+# release:
+#   github:
+#     owner: likhita-809
+#     name: regen-ledger
+#   prerelease: auto
+#   draft: false

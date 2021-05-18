@@ -1,10 +1,10 @@
 name: goreleaser
 
-on: [push]
-  # pull_request:
-  # push:
-  #   tags:
-  #     - '*'
+on: 
+  pull_request:
+  push:
+    tags:
+      - '*'
 
 jobs:
   goreleaser:
@@ -12,80 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # -
-      #   name: Windows dependencies
-      #   run: |
-      #     sudo apt install binutils-mingw-w64
-      #     sudo apt-get install gcc-mingw-w64-x86-64
-      #     sudo apt-get install g++-mingw-w64-x86-64
-      #     echo "==========================="
-      #     whereis x86_64-w64-mingw32-gcc
-      #     whereis x86_64-w64-mingw32-g++
-      #     echo "==========================="
-      #     ls /usr/lib
-
-# sudo cp /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu
-#           sudo cp /home/runner/work/osxcross/target/target/lib/x86_64-w64-mingw32-ld /usr/lib/x86_64-w64-mingw32-ld         
-
-
-          # sudo apt-get install gcc g++ 
-          # sudo ln -s /home/runner/work/osxcross/target/target/bin/arm_binaries/cc1 /usr/bin/cc1
-          # whereis cc1
-
-           # echo "============="
-          # ls /usr/lib/gcc/x86_64-linux-gnu/9
-          # echo "============="
-          # ls /usr/lib/x86_64-linux-gnu
-
-      # -
-      #   name: Install arm dependencies
-      #   run: |
-      #     echo $PATH
-      #     sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
-      #     echo "===================="
-      #     whereis arm-linux-gnueabi-gcc
-         
-      - name: print env
-        run: |
-          echo $(secrets.GITHUB_TOKEN)
-
       -
-        name: GCC multilib and arm dependencies
+        name: GCC multilib
         run: |
           sudo apt-get update
-          sudo apt-get install --reinstall build-essential
           sudo apt-get install gcc-multilib g++-multilib clang 
-          sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
-          sudo apt-get install gcc-mingw-w64
-          echo "======================="
-          whereis i686-w64-mingw32-gcc
-          echo "===================="
-          ls /opt/hostedtoolcache/go/1.16.2/x64/pkg/tool/linux_amd64
-          echo "===================="
-          ls /opt/hostedtoolcache/go/1.16.2/x64
-          echo "===================="
-          whereis x86_64-w64-mingw32-gcc
-          echo "======================"
-          cc -v
-          echo "==================="
-          whereis arm-linux-gnueabi-g++-7
-          whereis arm-linux-gnueabi-gcc
-          echo "==================="
-          ls /usr/lib/arm-linux-gnueabi
           
-
-
-         
       -
         name: OSXCross for CGO Support
         run: |
           mkdir ../../osxcross
           git clone https://github.com/likhita-809/osxcross-target.git ../../osxcross/target
           sudo ln -s /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
-          sudo ln -s /usr/lib/gcc/x86_64-linux-gnu/9/cc1 /usr/bin/cc1
-          echo "==================="
-          whereis cc1
-    
       -
         name: Checkout
         uses: actions/checkout@v2
@@ -104,3 +42,119 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
+
+
+
+
+
+
+
+
+
+
+# name: goreleaser
+
+# on: [push]
+#   # pull_request:
+#   # push:
+#   #   tags:
+#   #     - '*'
+
+# jobs:
+#   goreleaser:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # -
+#       #   name: Windows dependencies
+#       #   run: |
+#       #     sudo apt install binutils-mingw-w64
+#       #     sudo apt-get install gcc-mingw-w64-x86-64
+#       #     sudo apt-get install g++-mingw-w64-x86-64
+#       #     echo "==========================="
+#       #     whereis x86_64-w64-mingw32-gcc
+#       #     whereis x86_64-w64-mingw32-g++
+#       #     echo "==========================="
+#       #     ls /usr/lib
+
+# # sudo cp /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu
+# #           sudo cp /home/runner/work/osxcross/target/target/lib/x86_64-w64-mingw32-ld /usr/lib/x86_64-w64-mingw32-ld         
+
+
+#           # sudo apt-get install gcc g++ 
+#           # sudo ln -s /home/runner/work/osxcross/target/target/bin/arm_binaries/cc1 /usr/bin/cc1
+#           # whereis cc1
+
+#            # echo "============="
+#           # ls /usr/lib/gcc/x86_64-linux-gnu/9
+#           # echo "============="
+#           # ls /usr/lib/x86_64-linux-gnu
+
+#       # -
+#       #   name: Install arm dependencies
+#       #   run: |
+#       #     echo $PATH
+#       #     sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
+#       #     echo "===================="
+#       #     whereis arm-linux-gnueabi-gcc
+         
+#       - name: print env
+#         run: |
+#           echo $(secrets.GITHUB_TOKEN)
+
+#       -
+#         name: GCC multilib and arm dependencies
+#         run: |
+#           sudo apt-get update
+#           sudo apt-get install --reinstall build-essential
+#           sudo apt-get install gcc-multilib g++-multilib clang 
+#           sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
+#           sudo apt-get install gcc-mingw-w64
+#           echo "======================="
+#           whereis i686-w64-mingw32-gcc
+#           echo "===================="
+#           ls /opt/hostedtoolcache/go/1.16.2/x64/pkg/tool/linux_amd64
+#           echo "===================="
+#           ls /opt/hostedtoolcache/go/1.16.2/x64
+#           echo "===================="
+#           whereis x86_64-w64-mingw32-gcc
+#           echo "======================"
+#           cc -v
+#           echo "==================="
+#           whereis arm-linux-gnueabi-g++-7
+#           whereis arm-linux-gnueabi-gcc
+#           echo "==================="
+#           ls /usr/lib/arm-linux-gnueabi
+          
+
+
+         
+#       -
+#         name: OSXCross for CGO Support
+#         run: |
+#           mkdir ../../osxcross
+#           git clone https://github.com/likhita-809/osxcross-target.git ../../osxcross/target
+#           sudo ln -s /home/runner/work/osxcross/target/target/lib/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+#           sudo ln -s /usr/lib/gcc/x86_64-linux-gnu/9/cc1 /usr/bin/cc1
+#           echo "==================="
+#           whereis cc1
+    
+#       -
+#         name: Checkout
+#         uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#       -
+#         name: Set up Go
+#         uses: actions/setup-go@v2
+#         with:
+#           go-version: 1.16
+#       -
+#         name: Run GoReleaser
+#         uses: goreleaser/goreleaser-action@v2
+#         with:
+#           version: latest
+#           args: release --rm-dist
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.github_token }}
