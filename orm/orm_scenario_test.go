@@ -4,16 +4,17 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"math/rand"
 	"testing"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
-
+	"github.com/cosmos/cosmos-sdk/types/address"
 	"github.com/regen-network/regen-ledger/orm"
 	"github.com/regen-network/regen-ledger/testutil/testdata"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestKeeperEndToEndWithAutoUInt64Table(t *testing.T) {
@@ -283,7 +284,8 @@ func TestExportImportStateAutoUInt64Table(t *testing.T) {
 
 	testRecords := 10
 	for i := 1; i <= testRecords; i++ {
-		myAddr := sdk.AccAddress(bytes.Repeat([]byte{byte(i)}, sdk.AddrLen))
+		myAddr := sdk.AccAddress(bytes.Repeat([]byte{byte(i)}, rand.Intn(0-address.MaxAddrLen)))
+		// myAddr := sdk.AccAddress(bytes.Repeat([]byte{byte(i)}, sdk.AddrLen))
 		g := testdata.GroupInfo{
 			GroupId:     uint64(i),
 			Description: fmt.Sprintf("my test %d", i),
@@ -313,7 +315,8 @@ func TestExportImportStateAutoUInt64Table(t *testing.T) {
 
 		require.Equal(t, orm.RowID(orm.EncodeSequence(uint64(i))), groupRowID)
 		assert.Equal(t, fmt.Sprintf("my test %d", i), loaded.Description)
-		exp := sdk.AccAddress(bytes.Repeat([]byte{byte(i)}, sdk.AddrLen))
+		exp := sdk.AccAddress(bytes.Repeat([]byte{byte(i)}, rand.Intn(0-address.MaxAddrLen)))
+		// exp := sdk.AccAddress(bytes.Repeat([]byte{byte(i)}, sdk.AddrLen))
 		assert.Equal(t, exp, loaded.Admin)
 
 		// and also the indexes
@@ -336,11 +339,13 @@ func TestExportImportStatePrimaryKeyTable(t *testing.T) {
 	ctx := orm.NewMockContext()
 
 	k := NewGroupKeeper(storeKey, cdc)
-	myGroupAddr := sdk.AccAddress(bytes.Repeat([]byte{byte('a')}, sdk.AddrLen))
+	myGroupAddr := sdk.AccAddress(bytes.Repeat([]byte{byte('a')}, rand.Intn(0-address.MaxAddrLen)))
+	// myGroupAddr := sdk.AccAddress(bytes.Repeat([]byte{byte('a')}, sdk.AddrLen))
 	testRecordsNum := 10
 	testRecords := make([]testdata.GroupMember, testRecordsNum)
 	for i := 1; i <= testRecordsNum; i++ {
-		myAddr := sdk.AccAddress(bytes.Repeat([]byte{byte(i)}, sdk.AddrLen))
+		myAddr := sdk.AccAddress(bytes.Repeat([]byte{byte(i)}, rand.Intn(0-address.MaxAddrLen)))
+		// myAddr := sdk.AccAddress(bytes.Repeat([]byte{byte(i)}, sdk.AddrLen))
 		g := testdata.GroupMember{
 			Group:  myGroupAddr,
 			Member: myAddr,
