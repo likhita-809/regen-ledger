@@ -255,7 +255,6 @@ run-tests:
 ifneq (,$(shell which tparse 2>/dev/null))
 	go test -mod=readonly -json $(ARGS) $(TEST_PACKAGES) | tparse
 else
-	# go test -mod=readonly $(ARGS) $(TEST_PACKAGES)
 	find . -name go.mod -execdir go test -mod=readonly $(ARGS) $(TEST_PACKAGES) \;
 endif
 
